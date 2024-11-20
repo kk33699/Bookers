@@ -1,6 +1,8 @@
+
 <h2>Book was successfully created.</h2>
 <p><%= @book.title %></p>
 
 <h2>本文</h2>
 <p><%= @book.body %></p>
 <%= book_to "編集", edit_book_path(@book.id) %>
+<%= book_to "削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
