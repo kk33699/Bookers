@@ -6,14 +6,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      # ここから
       flash[:notice] = "Book was successfully created"
       redirect_to book_path(@book.id)
-      # ここまで修正する(サンプルだとなしだから削除予定)
     else
-      # ここから
-      render :new
-      # ここまで修正する
+      @books = Book.all 
+      render :index
+
     end
   end
 
@@ -33,7 +31,8 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to '/books/new'
+    flash[:notice] = "Book was successfully destroyed."
+    redirect_to '/books'
   end
 
   private
