@@ -12,7 +12,6 @@ class BooksController < ApplicationController
       # ここまで修正する(サンプルだとなしだから削除予定)
     else
       # ここから
-      flash.now[:alert] = "投稿に失敗しました。"
       render :new
       # ここまで修正する
     end

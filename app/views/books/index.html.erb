@@ -1,10 +1,23 @@
-<h1>投稿一覧</h1>
+<div class="book-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      
+    </tr>
+  </thead>
+</table>
 
 <% @books.each do |book| %>
 
-  <p>タイトル</p>
-  <span>
-     <%= book_to book.title, book_path(book.id) %>
-  </span>
   
+  <div class="book-box">
+    
+    <div class="book-comment">
+      <span class="book-body"><%= book.body %></span>
+      <span class="book-title"><%=book_to book.title, book_path(.id) %></span>
+    </div>
+  </div>
 <% end %>
+</div>
