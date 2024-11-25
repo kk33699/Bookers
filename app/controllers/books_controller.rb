@@ -15,6 +15,18 @@ class BooksController < ApplicationController
     end
   end
 
+  def update
+    book = Book.find(params[:id])  # モデル名を修正
+    if book.update(book_params)   # 更新処理に成功した場合
+      flash[:notice] = "Book was successfully updated"
+      redirect_to book_path(book.id)
+    else
+      @book = book
+      render :edit  # 編集画面を再表示
+    end
+  end
+
+
   def index
     @books = Book.all  
     @book = Book.new
@@ -27,6 +39,7 @@ class BooksController < ApplicationController
   def edit
     @book = Book.find(params[:id])
   end
+
 
   def destroy
     book = Book.find(params[:id])
